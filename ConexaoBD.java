@@ -4,12 +4,12 @@ import java.sql.SQLException;
 
 public class ConexaoBD {
     private static Connection conexao = null;
-    private String fonte = "trabalho_bd?useTimezone=true&serverTimezone=UTC";
+    private String fonte = "Restaurante?useTimezone=true&serverTimezone=UTC";
     private String jdbcDriver = "com.mysql.cj.jdbc.Driver";
     private ConexaoBD() throws ClassNotFoundException {
         try {
             Class.forName(jdbcDriver);
-            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + fonte, "127.0.0.1", "753357");
+            conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + fonte, "root", "Laranjeira01");
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Ocorreu um erro ao conectar o banco de dados");
