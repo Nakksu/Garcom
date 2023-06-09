@@ -1,0 +1,64 @@
+create database Restaurante;
+use restaurante;
+
+CREATE TABLE pessoa (
+  idGarcom INT,
+  nome VARCHAR(100),
+  email VARCHAR(100),
+  cpf VARCHAR(11),
+  dataNascimento DATE,
+  telefone VARCHAR(20),
+  sexo VARCHAR(1),
+  salFixo FLOAT,
+  PRIMARY KEY (idGarcom)
+);
+select * from pessoa;
+
+insert into pessoa
+(idGarcom,
+nome,
+email,
+cpf,
+dataNascimento,
+telefone,
+sexo,
+salFixo) values (5, 'José', 'jose@gmail.com', '16794426859', '1998-03-02', '3197564415', 'M', 3974.20);
+
+delete from pessoa where idGarcom = 12;
+
+select * from pessoa where email ='jose@gmail.com';
+
+create table mesa(
+numero int,
+capacidade int,
+situacao varchar(100),
+idGarcom varchar(1));
+
+INSERT INTO mesa 
+(numero,
+capacidade,
+situacao,
+idGarcom)
+values (3, 2, 'ocupada', 9);
+
+select * from mesa;
+
+select * from mesa where numero= 3; /**buscando pelo numero da mesa**/ 
+
+select * from mesa where capacidade >= 5; /**buscando pela capacidade**/
+
+update mesa set situacao = 'livre' where numero= 10; /**atualizando sitação da mesa**/
+
+delete from mesa where numero = 1; /**deletando uma mesa**/
+
+select * from mesa where numero = 3; /**busca pelo número da mesa**/
+
+update mesa set idGarcom = 9 WHERE numero = 3; /** trocando garçom de mesa**/
+
+select * from mesa where idGarcom = 9; /**buscando as mesas que o garçom atende**/
+
+select * from mesa where situacao = 'livre'; /**buscando as mesas livres**/
+
+select * from mesa where situacao = 'ocupada'; /**buscando as mesas ocupadas**/
+
+SELECT idGarcom, COUNT(*) AS mesas_atendidas FROM mesa GROUP BY idGarcom; /** relatório com qtd de mesas que cada garçom atende**/
