@@ -10,6 +10,41 @@ public class Teste2 {
     static Scanner nomeScanner = new Scanner(System.in);
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        int opcao;
+        do {
+            System.out.println("Menu Opções:");
+            System.out.println("Informe a opção desejada: ");
+            System.out.println("1. Inserir Garçom");
+            System.out.println("2. Remover garçom pelo ID");
+            System.out.println("3. Alterar garçom pelo ID");
+            System.out.println("4. Buscar garçom pelo ID");
+            System.out.println("0. Sair");
+            opcao = ler.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    inserirPessoa();
+                    break;
+                case 2:
+                    removerPessoaPorID();
+                    break;
+                case 3:
+                    alterarPessoaPorID();
+                    break;
+                case 4:
+                    buscarPessoaPorID();
+                    break;
+                case 0:
+                    System.out.println("Programa encerrado...");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Informe uma opção válida.");
+                    break;
+            }
+            System.out.println();
+        } while (opcao != 0);
+    }
+    private static void inserirPessoa() throws SQLException, ClassNotFoundException {
         int idGarcom;
         String nome, email, cpf, dataNascimento, telefone, sexo;
         float salFixo;
@@ -34,25 +69,24 @@ public class Teste2 {
         Garcom g = new Garcom(idGarcom, nome, email, cpf, dataNascimento, telefone, sexo, salFixo);
 
         inserirPessoa(g);
-
-        // Remover pessoa pelo ID
-        System.out.println("Digite o ID da pessoa que será removida: ");
+    }
+    private static void removerPessoaPorID() throws SQLException, ClassNotFoundException {
+        System.out.println("Informe o ID do garçom que será removido: ");
         int idRemover = ler.nextInt();
         removerPessoa(idRemover);
-
-        // Alterar pessoa pelo ID
-        System.out.println("Digite o ID da pessoa que deseja alterar: ");
+    }
+    private static void alterarPessoaPorID() throws SQLException, ClassNotFoundException {
+        System.out.println("Informe o ID do garçom que deseja alterar: ");
         int idAlterar = ler.nextInt();
         System.out.println("Informe o novo nome: ");
         String novoNome = nomeScanner.nextLine();
         alterarPessoa(idAlterar, novoNome);
-
-        // Buscar pessoa pelo ID
-        System.out.println("Digite o ID da pessoa a ser buscada: ");
+    }
+    private static void buscarPessoaPorID() throws SQLException, ClassNotFoundException {
+        System.out.println("Informe o ID do garçom a ser buscado: ");
         int idBuscar = ler.nextInt();
         buscarPessoa(idBuscar);
     }
-
     private static void inserirPessoa(Garcom garcom) throws SQLException, ClassNotFoundException {
         try {
             conexao = ConexaoBD.getInstance();
@@ -68,13 +102,12 @@ public class Teste2 {
             stmt.setFloat(8, garcom.getSalFixo());
             stmt.executeUpdate();
             stmt.close();
-            System.out.println("Pessoa cadastrada com sucesso.");
+            System.out.println("Garçom cadastrado com sucesso.");
         } catch (Exception e) {
-            System.out.println("Não foi possível cadastrar a pessoa.");
+            System.out.println("Não foi possível cadastrar o garçom.");
             e.printStackTrace();
         }
     }
-
     private static void removerPessoa(int id) throws SQLException, ClassNotFoundException {
         try {
             conexao = ConexaoBD.getInstance();
@@ -84,16 +117,15 @@ public class Teste2 {
             int rowsAffected = stmt.executeUpdate();
             stmt.close();
             if (rowsAffected > 0) {
-                System.out.println("Pessoa removida com sucesso.");
+                System.out.println("Garçom removido com sucesso.");
             } else {
-                System.out.println("Nenhuma pessoa encontrada com o ID fornecido.");
+                System.out.println("Nenhum garçom encontrado com o ID informado.");
             }
         } catch (Exception e) {
-            System.out.println("Não foi possível remover a pessoa.");
+            System.out.println("Não foi possível remover a garçom.");
             e.printStackTrace();
         }
     }
-
     private static void alterarPessoa(int id, String novoNome) throws SQLException, ClassNotFoundException {
         try {
             conexao = ConexaoBD.getInstance();
@@ -104,16 +136,15 @@ public class Teste2 {
             int rowsAffected = stmt.executeUpdate();
             stmt.close();
             if (rowsAffected > 0) {
-                System.out.println("Pessoa alterada com sucesso.");
+                System.out.println("Garçom foi alterado.");
             } else {
-                System.out.println("Nenhuma pessoa encontrada.");
+                System.out.println("Nenhum garçom encontrado.");
             }
         } catch (Exception e) {
-            System.out.println("Não foi possível alterar a pessoa.");
+            System.out.println("Não foi possível alterar o garçom.");
             e.printStackTrace();
         }
     }
-
     private static void buscarPessoa(int id) throws SQLException, ClassNotFoundException {
         try {
             conexao = ConexaoBD.getInstance();
@@ -132,14 +163,14 @@ public class Teste2 {
                 float salFixo = rs.getFloat("salFixo");
 
                 Garcom pessoaEncontrada = new Garcom(idGarcom, nome, email, cpf, dataNascimento, telefone, sexo, salFixo);
-                System.out.println("Pessoa encontrada:");
+                System.out.println("Garçom encontrado:");
                 System.out.println(pessoaEncontrada.toString());
             } else {
-                System.out.println("Não há nenhuma pessoa cadastrada com esse ID.");
+                System.out.println("Não há nenhum garçom cadastrado com esse ID.");
             }
             stmt.close();
         } catch (Exception e) {
-            System.out.println("Não foi possível buscar a pessoa.");
+            System.out.println("Não foi possível buscar o garçom.");
             e.printStackTrace();
         }
     }
