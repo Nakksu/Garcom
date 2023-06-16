@@ -14,11 +14,11 @@ public class Teste2 {
         do {
             System.out.println("Menu Opções:");
             System.out.println("Informe a opção desejada: ");
-            System.out.println("1. Inserir Garçom");
-            System.out.println("2. Remover garçom pelo ID");
-            System.out.println("3. Alterar garçom pelo ID");
-            System.out.println("4. Buscar garçom pelo ID");
-            System.out.println("0. Sair");
+            System.out.println("1 - Inserir Garçom");
+            System.out.println("2 - Remover garçom pelo ID");
+            System.out.println("3 - Alterar garçom pelo ID");
+            System.out.println("4 - Buscar garçom pelo ID");
+            System.out.println("0 - Sair");
             opcao = ler.nextInt();
 
             switch (opcao) {
