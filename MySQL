@@ -1,6 +1,8 @@
+-- Criação DataBase --
 create database Restaurante;
 use restaurante;
 
+-- Criação Tabela Garçom --
 CREATE TABLE pessoa (
   idGarcom INT,
   nome VARCHAR(100),
@@ -12,8 +14,8 @@ CREATE TABLE pessoa (
   salFixo FLOAT,
   PRIMARY KEY (idGarcom)
 );
-select * from pessoa;
 
+-- Inserindo garçom --
 insert into pessoa
 (idGarcom,
 nome,
@@ -24,16 +26,14 @@ telefone,
 sexo,
 salFixo) values (5, 'José', 'jose@gmail.com', '16794426859', '1998-03-02', '3197564415', 'M', 3974.20);
 
-delete from pessoa where idGarcom = 12;
-
-select * from pessoa where email ='jose@gmail.com';
-
+-- Criação Tabela Mesa --
 create table mesa(
 numero int,
 capacidade int,
 situacao varchar(100),
 idGarcom varchar(1));
 
+-- Inserindo Mesa --
 INSERT INTO mesa 
 (numero,
 capacidade,
@@ -41,24 +41,38 @@ situacao,
 idGarcom)
 values (3, 2, 'ocupada', 9);
 
+-- Ações Da Tabela -- 
+
+-- Buscando pela Tabela --
+select * from pessoa;
 select * from mesa;
 
-select * from mesa where numero= 3; /**buscando pelo numero da mesa**/ 
+-- Buscando pelo Número da Mesa --
+select * from mesa where numero= 3;
 
-select * from mesa where capacidade >= 5; /**buscando pela capacidade**/
+-- Buscando Garçom pelo E-mail --
+select * from pessoa where email = 'gaby@gmail.com';
 
-update mesa set situacao = 'livre' where numero= 10; /**atualizando sitação da mesa**/
+-- Buscando pela Capacidade --
+select * from mesa where capacidade >= 5;
 
-delete from mesa where numero = 1; /**deletando uma mesa**/
+-- Atualizando Situação da Mesa --
+update mesa set situacao = 'livre' where numero= 10;
 
-select * from mesa where numero = 3; /**busca pelo número da mesa**/
+-- Deletando uma Mesa --
+delete from mesa where numero = 1;
 
-update mesa set idGarcom = 9 WHERE numero = 3; /** trocando garçom de mesa**/
+-- Trocando Garçom de Mesa --
+update mesa set idGarcom = 9 WHERE numero = 3;
 
-select * from mesa where idGarcom = 9; /**buscando as mesas que o garçom atende**/
+-- Buscando as Mesas que o Garçom atende --
+select * from mesa where idGarcom = 9;
 
-select * from mesa where situacao = 'livre'; /**buscando as mesas livres**/
+-- Buscando Mesas Livres --
+select * from mesa where situacao = 'livre';
 
-select * from mesa where situacao = 'ocupada'; /**buscando as mesas ocupadas**/
+-- Buscando Mesas Ocupadas --
+select * from mesa where situacao = 'ocupada';
 
-SELECT idGarcom, COUNT(*) AS mesas_atendidas FROM mesa GROUP BY idGarcom; /** relatório com qtd de mesas que cada garçom atende**/
+-- Relatório informando a Quantidade de Mesas que cada garçom atende --
+SELECT idGarcom, COUNT(*) AS mesas_atendidas FROM mesa GROUP BY idGarcom;
