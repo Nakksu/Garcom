@@ -1,0 +1,35 @@
+public class Mesa {
+    private int numeroMesa;
+    private int capacidade;
+    private String situacao;
+
+    public Mesa(int numero, int capacidade, String situacao) {
+        this.numeroMesa = numero;
+        this.situacao = situacao;
+        this.capacidade = capacidade;
+    }
+
+    public int getNumeroMesa() {
+        return numeroMesa;
+    }
+
+    public void setNumeroMesa(int numeroMesa) {
+        this.numeroMesa = numeroMesa;
+    }
+
+    public int getCapacidade() {
+        return capacidade;
+    }
+
+    public void setCapacidade(int capacidade) {
+        this.capacidade = capacidade;
+    }
+
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+}
