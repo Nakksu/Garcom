@@ -157,7 +157,6 @@ public class MenuMesa {
 
                 Mesa mesaEncontrada = new Mesa(numero, capacidade, situacao, idGarcom);
                 System.out.println("Mesa encontrada:");
-                System.out.println(mesaEncontrada.toString());
             } else {
                 System.out.println("Não há nenhuma mesa cadastrada com esse número.");
             }
