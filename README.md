@@ -10,4 +10,6 @@
      - Crie a tabela Pessoa;
      - Crie a tabela Mesa;
        
-- Rode o código
+- Rode o código na sua máquina
+   - Teste a classe **Garcom**, escolhendo uma opção no menu;
+   - Teste a classe **Mesa**, escollhendo uma opção no menu;
