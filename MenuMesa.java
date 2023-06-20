@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class Teste1 {
+public class MenuMesa {
     static Connection conexao = null;
     static Scanner ler = new Scanner(System.in);
     static Scanner lerScanner = new Scanner(System.in);
