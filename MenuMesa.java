@@ -10,6 +10,41 @@ public class MenuMesa {
     static Scanner lerScanner = new Scanner(System.in);
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        int opcao;
+        do {
+            System.out.println("Menu de Opções");
+            System.out.println("1 - Inserir mesa");
+            System.out.println("2 - Remover mesa");
+            System.out.println("3 - Alterar mesa");
+            System.out.println("4 - Buscar mesa");
+            System.out.println("0 - Sair");
+            opcao = ler.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    inserirMesa();
+                    break;
+                case 2:
+                    removerMesa();
+                    break;
+                case 3:
+                    alterarMesa();
+                    break;
+                case 4:
+                    buscarMesa();
+                    break;
+                case 0:
+                    System.out.println("Encerrando o programa...");
+                    break;
+                default:
+                    System.out.println("Opção inválida. Digite novamente.");
+                    break;
+            }
+            System.out.println();
+        } while (opcao != 0);
+    }
+
+    private static void inserirMesa() throws SQLException, ClassNotFoundException {
         int numero, capacidade;
         String situacao;
         int idGarcom;
@@ -27,20 +62,6 @@ public class MenuMesa {
         Mesa m = new Mesa(numero, capacidade, situacao, idGarcom);
 
         inserirMesa(m);
-
-        System.out.println("Digite o número da mesa que será removida: ");
-        int idRemover = ler.nextInt();
-        removerMesa(idRemover);
-
-        System.out.println("Digite o número da mesa que deseja alterar: ");
-        int numeroMesa = ler.nextInt();
-        System.out.println("Informe a nova capacidade: ");
-        int capacidadeNova = lerScanner.nextInt();
-        alterarMesa(numeroMesa, capacidadeNova);
-
-        System.out.println("Digite o número da mesa a ser buscada: ");
-        int idBuscar = ler.nextInt();
-        buscarMesa(idBuscar);
     }
 
     private static void inserirMesa(Mesa mesa) throws SQLException, ClassNotFoundException {
@@ -62,6 +83,12 @@ public class MenuMesa {
         }
     }
 
+    private static void removerMesa() throws SQLException, ClassNotFoundException {
+        System.out.println("Digite o número da mesa que será removida: ");
+        int numeroMesaRemover = ler.nextInt();
+        removerMesa(numeroMesaRemover);
+    }
+
     private static void removerMesa(int numeroMesa) throws SQLException, ClassNotFoundException {
         try {
             conexao = ConexaoBD.getInstance();
@@ -79,6 +106,14 @@ public class MenuMesa {
             System.out.println("Não foi possível remover a mesa.");
             e.printStackTrace();
         }
+    }
+
+    private static void alterarMesa() throws SQLException, ClassNotFoundException {
+        System.out.println("Digite o número da mesa que deseja alterar: ");
+        int numeroMesa = ler.nextInt();
+        System.out.println("Informe a nova capacidade: ");
+        int capacidadeNova = lerScanner.nextInt();
+        alterarMesa(numeroMesa, capacidadeNova);
     }
 
     private static void alterarMesa(int numeroMesa, int capacidade) throws SQLException, ClassNotFoundException {
@@ -99,6 +134,12 @@ public class MenuMesa {
             System.out.println("Não foi possível alterar a mesa.");
             e.printStackTrace();
         }
+    }
+
+    private static void buscarMesa() throws SQLException, ClassNotFoundException {
+        System.out.println("Digite o número da mesa a ser buscada: ");
+        int idBuscar = ler.nextInt();
+        buscarMesa(idBuscar);
     }
 
     private static void buscarMesa(int numeroMesa) throws SQLException, ClassNotFoundException {
