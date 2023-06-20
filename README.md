@@ -2,7 +2,13 @@
 
 ## Tutorial 📄
 
-
+- Instalar e aplicar o conector no seu código
+   - Ir na aba files/arquivo
+   - Em seguida vai em Project Stucture
+   - Vai em Libraries
+   - Clique no botão "+" para adicionar;
+   - Procure o seu conector instalado e adicione ele;
+     
 - Trocar senha do banco de dados da classe ***ConexaoBD*** pela senha do seu banco de dados criado
      - Ir na classe **ConexaoBD**;
      - No getConnection toque a senha sujerida para a senha do seu banco;
