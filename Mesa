@@ -2,13 +2,15 @@ public class Mesa {
     private int numeroMesa;
     private int capacidade;
     private String situacao;
+    private int idGarcom;
 
-    public Mesa(int numero, int capacidade, String situacao) {
-        this.numeroMesa = numero;
-        this.situacao = situacao;
+    public Mesa(int numeroMesa, int capacidade, String situacao, int idGarcom) {
+        this.numeroMesa = numeroMesa;
         this.capacidade = capacidade;
-    }
+        this.situacao = situacao;
+        this.idGarcom = idGarcom;
 
+    }
     public int getNumeroMesa() {
         return numeroMesa;
     }
@@ -31,5 +33,9 @@ public class Mesa {
 
     public void setSituacao(String situacao) {
         this.situacao = situacao;
+    }
+
+    public int getIdGarcom() {
+        return idGarcom;
     }
 }
