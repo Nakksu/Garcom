@@ -165,7 +165,6 @@ public class MenuGarcom {
 
                 Garcom pessoaEncontrada = new Garcom(idGarcom, nome, email, cpf, dataNascimento, telefone, sexo, salFixo);
                 System.out.println("Garçom encontrado:");
-                System.out.println(pessoaEncontrada.toString());
             } else {
                 System.out.println("Não há nenhum garçom cadastrado com esse ID.");
             }
