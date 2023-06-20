@@ -4,10 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class Teste2 {
+public class MenuGarcom {
     static Connection conexao = null;
     static Scanner ler = new Scanner(System.in);
     static Scanner nomeScanner = new Scanner(System.in);
+
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         int opcao;
