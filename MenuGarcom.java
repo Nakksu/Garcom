@@ -99,7 +99,7 @@ public class MenuGarcom {
             stmt.setString(4, garcom.getCpf());
             stmt.setString(5, garcom.getDataNascimento());
             stmt.setString(6, garcom.getTelefone());
-            stmt.setString(7, garcom.getSexo()); // Agora é uma String
+            stmt.setString(7, garcom.getSexo());
             stmt.setFloat(8, garcom.getSalFixo());
             stmt.executeUpdate();
             stmt.close();
